@@ -52,12 +52,9 @@ class Decryypt
       int p[] = new int[8];
       Convert c= new Convert();
       Exor x= new Exor();
-     // String Plaintext="";
-      ni = (int)n;
-      ki = (int)key;
-      e=c.Binary(ni);
-      k=c.Binary(ki);
-      p = x.XOR(ni,ki);
+      e=c.Binary(n);
+      k=c.Binary(key);
+      p = x.XOR(e,k);
       d=c.Charac(p);
       return(d);
     }
@@ -73,11 +70,9 @@ class Encryppt
         int p[] = new int[8];
         Convert c= new Convert();
         Exor x= new Exor();
-        ni = (int)n;
-        ki = (int)key;
-        e=c.Binary(ni);
-        k=c.Binary(ki);
-        p = x.XOR(ni,ki);
+        e=c.Binary(n);
+        k=c.Binary(key);
+        p = x.XOR(e,k);
         d=c.Charac(p);
         return(d);
     }
@@ -91,44 +86,50 @@ class file
     Decryypt d = new Decryypt();
     int ch,n,i;
     char k,p,c;
-    String plaintext ="";
-    String key="";
-    String cyphertext ="";
+//    String plaintext;
+//    String key;
+//    String cyphertext ="";
     do
      {
         System.out.println("1:ENCRYPT\n2:DECRPYT\n3:EXIT");
         ch=sc.nextInt();
         switch (ch)
         {
-            case 1 : System.out.println("Enter the key:");
+            case 1 : String plaintext;
+                     String key;
+                     String cyphertext ="";
+                     System.out.println("Enter the key:");
                      key=sc.nextLine();
-                     k=key[0];
+                     k=key.charAt(0);
                      System.out.println("Enter the plaintext");
                      plaintext=sc.nextLine();
                      n=plaintext.length();
                      for(i=0;i<n;i++)
                      {
                          p=plaintext.charAt(i);
-                         c=Encrypt(p,k);
+                         c=e.Encrypt(p,k);
                          cyphertext=cyphertext + "" + c;
                      }
                      System.out.println(cyphertext);
                      break;
-            case 2 : System.out.println("Enter the key");
-                     key=sc.nextLine();
-                     k=key[0];
+            case 2 : String plantext="";
+                     String ke;
+                     String cyphetext;
+                     System.out.println("Enter the key");
+                     ke=sc.nextLine();
+                     k=ke.charAt(0);
                      System.out.println("Enter the cyphertext to be decrypted");
-                     cyphertext=sc.nextLine();
-                     n=cyphertext.length();
+                     cyphetext=sc.nextLine();
+                     n=cyphetext.length();
                      for(i=0;i<n;i++)
                      {
-                        c=cyphertext.charAt(i);
-                        p=Decrypt(c,k);
-                        plaintext=plaintext + "" + p;
+                        c=cyphetext.charAt(i);
+                        p=d.Decrypt(c,k);
+                        plantext=plantext + "" + p;
                      }
-                     System.out.println(plaintext);
+                     System.out.println(plantext);
                      break;
         }
-     }while(ch<3)
+    }while(ch<3);
   }
 }
