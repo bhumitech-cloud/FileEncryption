@@ -7,14 +7,12 @@ class Convert
     {
         int count=0,i=0,a,k,ni;
         int d[]=new int[8];
-        String x = "";
         d[i]=0;
         ni=(int)n;
         while(ni > 0)
         {
             i++;
             a = ni % 2;
-            x = x + "" + a;
             ni = ni / 2;
             d[i]=a;
         }
