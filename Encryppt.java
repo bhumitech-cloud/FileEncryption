@@ -18,7 +18,6 @@ class Convert
             ni = ni / 2;
             d[i]=a;
         }
-        System.out.println("Binary number:"+x);
         return(d);
     }
     public char Charac(int[] c)
@@ -27,6 +26,7 @@ class Convert
         char d;
         num=(c[0]*128)+(c[1]*64)+(c[2]*32)+(c[3]*16)+(c[4]*8)+(c[5]*4)+(c[6]*2)+(c[7]*1);
         d=(char)num;
+        //System.out.println(num);
         return(d);
     }
 }
@@ -70,8 +70,10 @@ class Encryppt
             dat=c.Binary(ch);
             cipher=x.XOR(dat,key);
             ch=c.Charac(cipher);
+        //    System.out.println(ch);
             cyphertext=cyphertext + "" + ch;
         }
+        System.out.println("the Encrypted text is:");
         System.out.println(cyphertext);
     }
 }
